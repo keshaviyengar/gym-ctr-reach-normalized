@@ -110,7 +110,8 @@ class Obs(object):
             obs = np.concatenate(
                 [trig_joints, normalized_error, np.array([normalized_goal_tolerance])])
         if not self.observation_space['observation'].contains(obs):
-            print('obs not in space. ' + str(betas_U))
+            pass
+            #print('obs not in space. ' + str(obs[obs > 1.0] or obs < -1.0))
         self.obs = {
             'observation': obs.copy(),
             'achieved_goal': achieved_goal.copy(),

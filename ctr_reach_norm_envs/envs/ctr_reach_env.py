@@ -172,7 +172,10 @@ class CtrReachNormEnv(gym.GoalEnv):
         """
         assert achieved_goal.shape == desired_goal.shape
         d = np.linalg.norm(achieved_goal - desired_goal, axis=-1)
-        return -(d > self.goal_tolerance.get_tol()).astype(np.float64)
+        if d < self.goal_tolerance.get_tol():
+            return 0.0
+        else:
+            return -d
 
     def render(self, mode='empty', **kwargs):
         """
