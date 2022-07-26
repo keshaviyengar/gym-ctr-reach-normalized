@@ -196,7 +196,6 @@ class CtrReachNormEnv(gym.GoalEnv):
         if self.visualization != None:
             self.visualization.close()
             self.visualization = None
-        raise SystemExit(0)
 
     def update_goal_tolerance(self, timestep):
         """
